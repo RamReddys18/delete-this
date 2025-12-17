@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GDF Viewer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/vis-network/styles/vis-network.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">GDF Viewer</div>
+      <div class="controls">
+        <label class="file-btn">
+          <input id="fileInput" type="file" accept=".gdf,.dgf" hidden>
+          <span>Select .gdf file</span>
+        </label>
+        <button id="fitBtn">Fit</button>
+        <label class="switch">
+          <input id="physicsToggle" type="checkbox" checked>
+          <span>Physics</span>
+        </label>
+        <input id="searchInput" type="text" placeholder="Search node by id/label">
+        <button id="searchBtn">Search</button>
+      </div>
+    </header>
+    <main>
+      <section id="dropZone" class="dropzone">Drop .gdf/.dgf file here</section>
+      <section class="statusbar">
+        <div id="status">No file loaded</div>
+        <div id="counts"></div>
+        <div id="warnings"></div>
+      </section>
+      <section class="tabs">
+        <button class="tab active" data-tab="graph">Graph</button>
+        <button class="tab" data-tab="tables">Tables</button>
+      </section>
+      <section id="graph" class="panel active">
+        <div id="graphContainer" class="graph"></div>
+      </section>
+      <section id="tables" class="panel">
+        <div class="table-wrap">
+          <h3>Nodes</h3>
+          <table id="nodesTable"></table>
+        </div>
+        <div class="table-wrap">
+          <h3>Edges</h3>
+          <table id="edgesTable"></table>
+        </div>
+      </section>
+    </main>
+    <script src="https://unpkg.com/vis-network/dist/vis-network.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pako@2.1.0/dist/pako.min.js"></script>
+    <script src="gdfParser.js"></script>
+    <script src="graphRenderer.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

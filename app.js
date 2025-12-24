@@ -133,6 +133,18 @@ function initControls() {
   $('fitBtn').addEventListener('click', () => {
     if (current.graph) current.graph.fit();
   });
+  $('clearBtn').addEventListener('click', () => {
+    current.nodes = [];
+    current.edges = [];
+    current.graph = null;
+    $('graphContainer').innerHTML = '';
+    setStatus('Graph cleared');
+    setCounts([], []);
+    setWarnings([]);
+    renderTable($('nodesTable'), []);
+    renderTable($('edgesTable'), []);
+    $('fileInput').value = '';
+  });
   $('physicsToggle').addEventListener('change', e => {
     if (current.graph) current.graph.setPhysics(e.target.checked);
   });
